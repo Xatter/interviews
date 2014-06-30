@@ -23,30 +23,23 @@
  Unfortunately on the phone I came up with the n^2 brute force solution where you look at
  each word, and then look at all the other words and create the lists.  Sad panda.
  
- About 5 minutes after my interview while walking on the street this solution popped into my head.
- 
- It's Nlog(N) but uses a lot of memory. I still think there might be a linear solution.
- */
+This is the even simpler version I thought of at lunch today, and is probably what the interviewer
+ was expecting me to come up with on the spot.  Such is life.  I'll get better with practice
+*/
 
 #include <iostream>
 #include <vector>
 #include <unordered_map>
 
 int main(int argc, const char * argv[]) {
-    std::vector<std::string> list;
-    list.push_back("cat");
-    list.push_back("dog");
-    list.push_back("god");
-    list.push_back("atc");
-    list.push_back("door");
-    list.push_back("gdo");
+    std::vector<std::string> list = {"cat", "dog", "god", "atc", "door", "gdo"};
     
     std::unordered_map<std::string, std::vector<std::string>*> hash;
     
     for (auto i = list.begin(); i!=list.end(); ++i) {
         std::string str = *i;
         std::string sorted_str = *i;
-        std::sort(sorted_str.begin(), sorted_str.end());
+        std::sort(sorted_str.begin(), sorted_str.end()); // nlog(n) where n is the number of chars
         
         if(hash[sorted_str] == NULL) {
             hash[sorted_str] = new std::vector<std::string>();
