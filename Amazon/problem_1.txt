@@ -1,0 +1,9 @@
+ Given a list of strings, write a function which returns a list of list
+ of strings, where each list contains the strings which are anagrams of
+ each other.
+ 
+ E.g. Given the input
+ [ "cat", "dog", "god", "atc", "door", "gdo" ]
+ return
+ [ [ "cat", "atc" ], [ "dog", "god", "gdo" ], [ "door" ] ].
+
