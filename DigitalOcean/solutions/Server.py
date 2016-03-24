@@ -33,9 +33,9 @@ class Server(object):
                     return FAIL
 
                 if dependency not in self.INVERSE_INDEX:
-                    self.INVERSE_INDEX[dependency] = []
+                    self.INVERSE_INDEX[dependency] = {}
 
-                self.INVERSE_INDEX[dependency].append(package)
+                self.INVERSE_INDEX[dependency][package] = None
 
         self.INDEX[package] = dependencies
         return OK
@@ -46,7 +46,16 @@ class Server(object):
 
         if package in self.INVERSE_INDEX:
             return FAIL
-            
+
+        keys = [k for k in self.INVERSE_INDEX]
+        for k in keys:
+            dependsUpon = self.INVERSE_INDEX[k]
+            if package in dependsUpon:
+                dependsUpon.pop(package, None)
+
+            if len(dependsUpon) == 0:
+                self.INVERSE_INDEX.pop(k, None)
+
         self.INDEX.pop(package, None)
         return OK
 

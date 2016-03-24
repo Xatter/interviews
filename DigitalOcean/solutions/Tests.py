@@ -1,6 +1,10 @@
 import unittest
 import Server
 
+OK = "OK\n"
+FAIL = "FAIL\n"
+ERROR = "ERROR\n"
+
 class Test_CommandParsing(unittest.TestCase):
     # Proper Parse of all command types
     # Unexepected Input
@@ -24,33 +28,33 @@ class Test_Indexing(unittest.TestCase):
         self.server = Server.Server()
 
     def test_ShouldIndexSinglePackage(self):
-        self.assertEqual('OK\n', self.server.index('foo', None))
+        self.assertEqual(OK, self.server.index('foo', None))
 
     def test_ShouldReturnOKIfAlreadyExists(self):
         self.server.index('foo', None)
-        self.assertEqual('OK\n', self.server.index('foo', None))
+        self.assertEqual(OK, self.server.index('foo', None))
 
     def test_ShouldIndexTwoPackages(self):
-        self.assertEqual('OK\n', self.server.index('foo', None))
-        self.assertEqual('OK\n', self.server.index('bar', None))
+        self.assertEqual(OK, self.server.index('foo', None))
+        self.assertEqual(OK, self.server.index('bar', None))
 
     def test_ShouldNotIndexIfDependencyNotIndexed(self):
-        self.assertEqual('FAIL\n', self.server.index('bar', ['foo']))
+        self.assertEqual(FAIL, self.server.index('bar', ['foo']))
 
     def test_ShouldIndexWithDependency(self):
         self.server.index('foo', None)
-        self.assertEqual('OK\n', self.server.index('bar', ['foo']))
+        self.assertEqual(OK, self.server.index('bar', ['foo']))
 
 class Test_Querying(unittest.TestCase):
     def setUp(self):
         self.server = Server.Server()
 
     def test_QueryFails(self):
-        self.assertEqual('FAIL\n', self.server.query('foo'))
+        self.assertEqual(FAIL, self.server.query('foo'))
 
     def test_QueryReturnsOk(self):
         self.server.index('foo',None)
-        self.assertEqual('OK\n', self.server.query('foo'))
+        self.assertEqual(OK, self.server.query('foo'))
 
 
 # * For `QUERY` commands, the server returns `OK\n` if the package is indexed. It returns `FAIL\n` if the package isn't indexed.
@@ -64,23 +68,32 @@ class Test_Removing(unittest.TestCase):
         self.server = Server.Server()
 
     def test_RemoveShouldReturnOkForNonIndexedPackage(self):
-        self.assertEqual('OK\n', self.server.remove('foo'))
+        self.assertEqual(OK, self.server.remove('foo'))
 
     def test_ShouldRemoveSoloPackage(self):
         self.server.index('foo', None)
-        self.assertEqual('OK\n', self.server.remove('foo'))
+        self.assertEqual(OK, self.server.remove('foo'))
 
     def test_ShouldNotRemoveIfDependencyOfAnotherPackage(self):
         self.server.index('foo', None)
         self.server.index('bar', ['foo'])
-        self.assertEqual('FAIL\n', self.server.remove('foo'))
+        self.assertEqual(FAIL, self.server.remove('foo'))
 
     def test_ShouldNotRemoveIfDependencyOfDependencyOfAnotherPackage(self):
         # Note to self, we may not need this test case I need some more clarity on the requirements
         self.server.index('foo', None)
         self.server.index('bar', ['foo'])
         self.server.index('baz', ['bar'])
-        self.assertEqual('FAIL\n', self.server.remove('bar'))
+        self.assertEqual(FAIL, self.server.remove('bar'))
+
+    def test_ShouldRemoveInCorrectOrder(self):
+        self.server.index('foo', None)
+        self.server.index('bar', ['foo'])
+        self.server.index('baz', ['bar'])
+
+        self.assertEqual(OK, self.server.remove('baz'))
+        self.assertEqual(OK, self.server.remove('bar'))
+        self.assertEqual(OK, self.server.remove('foo'))
 
 class Test_Server(unittest.TestCase):
     # * If the server doesn't recognise the command or if there's any problem with the message sent by the client it should return `ERROR\n`.
