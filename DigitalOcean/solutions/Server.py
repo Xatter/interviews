@@ -3,14 +3,28 @@ import select
 from typing import List
 import queue
 import logging
+import os
 
-logging.basicConfig(level=logging.INFO,
+LOG_LEVEL = os.getenv('DO_LOG_LEVEL')
+if LOG_LEVEL == "DEBUG":
+    LOG_LEVEL = logging.DEBUG
+elif LOG_LEVEL == "INFO":
+    LOG_LEVEL = logging.INFO
+elif LOG_LEVEL == "WARN":
+    LOG_LEVEL = logging.WARN
+else:
+    LOG_LEVEL = logging.INFO
+
+PORT = os.getenv('DO_PORT') or 8080
+
+logging.basicConfig(level=LOG_LEVEL,
                     filename='service.log',
                     format="%(name)s: %(message)s")
 
 OK = "OK\n"
 FAIL = "FAIL\n"
 ERROR = "ERROR\n"
+
 
 class Indexer(object):
     def __init__(self):
@@ -84,20 +98,20 @@ class Indexer(object):
 indexer = Indexer()
 
 if __name__ == '__main__':
-    # This code is very procedural, but also easy to understand since it reads completely from 
+    # This code is very procedural, but also easy to understand since it reads completely from
     # top to bottom, left to right. I would hesitate to use an object oriented abstraction until
-    # it's absolutely necessary. 
+    # it's absolutely necessary.
 
     # A good functional abstraction would be AsyncSequence
 
     logger = logging.getLogger("Server")
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.setblocking(0)
-    server.bind(('localhost', 8080))
+    server.bind(('localhost', PORT))
     server.listen(10)
 
-    inputs = [ server ]
-    outputs = [ ]
+    inputs = [server]
+    outputs = []
     message_queues = {}
 
     while inputs:
@@ -168,5 +182,3 @@ if __name__ == '__main__':
             s.close()
 
             del message_queues[s]
-
-
