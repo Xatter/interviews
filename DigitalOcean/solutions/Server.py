@@ -2,6 +2,11 @@ import socket
 import select
 from typing import List
 import queue
+import logging
+
+logging.basicConfig(level=logging.INFO,
+                    filename='service.log',
+                    format="%(name)s: %(message)s")
 
 OK = "OK\n"
 FAIL = "FAIL\n"
@@ -11,6 +16,7 @@ class Indexer(object):
     def __init__(self):
         self.INDEX = {}
         self.INVERSE_INDEX = {}
+        self.logger = logging.getLogger("Indexer")
 
     def decode(self, message:str):
         if message.count('|') < 2:
@@ -28,6 +34,7 @@ class Indexer(object):
         return (parts[0], parts[1], dependencies)
 
     def index(self, package:str, dependencies:List[str]):
+        self.logger.debug("INDEX (%s) Dependencies (%s)", package, dependencies)
         if package in self.INDEX:
             return OK
 
@@ -42,28 +49,33 @@ class Indexer(object):
                 self.INVERSE_INDEX[dependency][package] = None
 
         self.INDEX[package] = dependencies
+        self.logger.info("Package Indexed (%s)", package)
         return OK
 
     def remove(self, package:str):
+        self.logger.debug("REMOVE (%s)", package)
         if package not in self.INDEX:
             return OK
 
         if package in self.INVERSE_INDEX:
+            self.logger.error("Could not remove package (%s) because it is depended upon by (%s)", package, [k for k in self.INVERSE_INDEX[package]])
             return FAIL
 
         keys = [k for k in self.INVERSE_INDEX]
         for k in keys:
             dependsUpon = self.INVERSE_INDEX[k]
             if package in dependsUpon:
-                dependsUpon.pop(package, None)
+                del dependsUpon[package]
 
             if len(dependsUpon) == 0:
-                self.INVERSE_INDEX.pop(k, None)
+                del self.INVERSE_INDEX[k]
 
-        self.INDEX.pop(package, None)
+        del self.INDEX[package]
+        self.logger.info("Package Removed (%s)", package)
         return OK
 
     def query(self, package:str):
+        self.logger.debug("QUERY (%s)", package)
         if package in self.INDEX:
             return OK
         else:
@@ -72,6 +84,13 @@ class Indexer(object):
 indexer = Indexer()
 
 if __name__ == '__main__':
+    # This code is very procedural, but also easy to understand since it reads completely from 
+    # top to bottom, left to right. I would hesitate to use an object oriented abstraction until
+    # it's absolutely necessary. 
+
+    # A good functional abstraction would be AsyncSequence
+
+    logger = logging.getLogger("Server")
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.setblocking(0)
     server.bind(('localhost', 8080))
@@ -80,7 +99,6 @@ if __name__ == '__main__':
     inputs = [ server ]
     outputs = [ ]
     message_queues = {}
-
 
     while inputs:
         ready_to_read, ready_to_write, exceptional = select.select(inputs, outputs, [])
@@ -92,19 +110,25 @@ if __name__ == '__main__':
                 inputs.append(connection)
 
                 message_queues[connection] = queue.Queue()
+                logger.info("Client connected (%s)", client_address)
             else:
-                data = s.recv(1024)
-                print(s)
-                print(data)
+                logger.debug("Client Socket (%s)", s)
+                data = s.recv(1024) # what if there's more data?
+                logger.debug("Recieved data(%s)", data)
                 if data:
+                    # Design notes:
+                    # We could make a more general abstraction here to make it easier to encapsulate
+                    # this logic with threads or some other mechanism. This would be a good enhancement
+                    # if/when the performance is not good enough, but add lots of compexity around synchronization
+                    # even with a nice abstraction such as Tasks, asyncio, etc.
+                    # For now, I like the readability that all the code and it's calls are in one place
+                    # and not strewn all over the file (or worse multiple files)
                     message = data.decode('utf-8').strip()
                     result = ERROR
 
                     command, package, dependencies = indexer.decode(message)
 
-                    print(command)
-                    print(package)
-                    print(dependencies)
+                    logger.debug("Parsed (%s, %s, %s)", command, package, dependencies)
 
                     if command == "INDEX":
                         result = indexer.index(package, dependencies)
@@ -112,8 +136,10 @@ if __name__ == '__main__':
                         result = indexer.remove(package)
                     elif command == "QUERY":
                         result = indexer.query(package)
+                    else:
+                        logger.error("Parsing Error (%s) (%s)", message, package)
 
-                    print(result)
+                    logger.debug("Response (%s)", result)
                     message_queues[s].put(result)
                     if s not in outputs:
                         outputs.append(s)
