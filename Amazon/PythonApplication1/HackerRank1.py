@@ -5,7 +5,6 @@
 # 'beer' and 'rebe' are anagrams? Probably
 
 
-
 def stringify(count, startIndexes):
     s = "" + str(count)
     for i in startIndexes:
@@ -54,10 +53,10 @@ class Tests(unittest.TestCase):
     def setUp(self):
         self.exampleInput = ['abdcghbaabcdij bcda', 'bbbababaaabbbb ab']
 
-    def test_firstExample(self):
+    def test_AmazonHR1Example1(self):
         a, b = self.exampleInput[0].split(' ')
         self.assertEqual('2 0 8', anagram(a, b))
 
-    def test_secondExample(self):
+    def test_AmazonHR1Example2(self):
         a, b = self.exampleInput[1].split(' ')
         self.assertEqual('6 2 3 4 5 6 9', anagram(a, b))
