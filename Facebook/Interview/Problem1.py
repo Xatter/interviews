@@ -6,6 +6,8 @@
 # \/   \/
 # 4<----3
 
+# In case my ascii art is difficult to read the code in __main__ sets up the graph as drawn
+
 class Node():
     def __init__(self, data):
         self.data = data
