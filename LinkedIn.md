@@ -1,85 +1,103 @@
 Linkedin Profile
 
 # Headline
-I build engineering teams that ship, cultures that retain talent and products people are willing to pay for.
+Technology-Driven Professional With Expertise In Creating Transparent Processes For Ease And Optimal Engagement Of Users. Director of Engineering
 
 # About
-I build engineering teams that ship, cultures that retain talent and products people are willing to pay for.
+As a highly competent engineering manager with 10+ years of demonstrating success in project development and creating easily understandable processes to facilitate users and with extensive knowledge of scripting languages, I am confident in my ability to serve any organization well. In addition, my experience as Team Lead is the focal point of my capabilities, as I can lead, grow and manage engineering teams for and influence high-performance outputs.
+ 
+I have led by example throughout my career while supporting individual growth and mentoring teams on excellent execution. In addition, my interpersonal skills enable me to foster long-lasting relationships with stakeholders on product and design. Moreover, I can leverage my creative insight to conceptualize and deliver market-leading innovative products for users. Furthermore, I have stayed relevant in the field by consistently adapting to changes within the industry and keeping up with technological advances.
+ 
+Some of my key accomplishments are:
+* Led team of eight members remotely and sold prototype machine learning graph compiler for new machine learning accelerator ASIC (C++, MLIR) in Silicon Valley.
+* Increased customer retention by 5% by successfully launching Droplet Monitoring product despite shortage of staff.
+* Maximized system stability, reduce outages and pages by 54% by directing technical delivery efficiently.
+ 
+Furthermore, I have proven expertise in aligning project specifications with company’s objectives and goals. Moreover, I can debug systems to avoid problems at the backend. Lastly, I can contribute to process improvement by actively resolving issues the engineering team faces as they arise.
+ 
+If you have any further questions or concerns, please get in touch with me via email at jim@extroverteddeveloper.com..
 
 # Experience
 
-Engineering Manager
-1QBit
-Feb 2019 - Current
+## 1QBit
+### Director of Engineering
+### Feb 2019 - Oct 2021
 
-Lead an HPC team in the creation of a machine learning graph compiler for a new machine learning accelerator ASIC. Drove $5M in new business revenue.
+With years of experience in leading teams and driving engineering processes, I oversee all aspects of projects within organization. Moreover, I accurately align all engineering projects, initiatives, and processes with established policies and objectives.​
 
+Key Accomplishments:
+* Led team of eight members fully remotely and created and sold prototype machine learning graph compiler for new machine learning accelerator ASIC (C++, MLIR) in Silicon Valley.
+* Made first sale of $5M in new business revenue by leveraging advanced technical skills and industry knowledge.
+* Received promotion from technical sales person to director of engineering by steering product development.
+* Supported 1QBit by building compiler despite absence of in-house software development skillset in company.
 
-Engineering Manager
-DigitalOcean
-May 2016-Feb 2018
+## DigitalOcean
+### Engineering Manager
+### May 2016-Feb 2018
 
-Manager for Digital Ocean's monitoring and alerting solution.
-Architected, built and ultimately lead the launch of the public facing monitoring and alerting solution for DigitalOcean
+As an engineering manager with expertise in providing growth opportunities to team, I undertook key projects and engineering duties and employed problem-solving skills to alleviate issues during project. Moreover, I effectively drafted and maintained reports on project progress to facilitate timely deliverance of project for customer retention.
 
-Full Stack Developer: 
-Wrote 25% of the front end (EmberJS)
-Wrote 50% of the back end code (Go)
-Designed the architecture for the distributed system (EventSourced microservices using Kafka, MySQL, Redis, Docker, Kubernetes)
+Key Accomplishments:
 
-Engineering manager:
-* Grew the team by 37%
-* Lead the team through a successful public launch
-* Implement project management changes that increased developer happiness by 60% on internal surveys
+* Established successful beta and general availability launches of Droplet Monitoring product by removing obstacles and directing technical aspects, culminating in additional user retention by 5% YoY.
+* Grew fully remote team by 66% in first year and fulfilled mentoring, coaching, and skill development needs.
+* Amplified team satisfaction rates by 80% on internal surveys by adapting agile process.
+* Collaborated cross-functionally with Design, API, Platform, Data, and Infrastructure teams (200+ team members) to offer industry-leading user experience.
+* Maximized system stability, assuaged outages and pages by 54% by monitoring key aspects of technical delivery.
+* Facilitated hiring process of Program Manager by evaluating candidate’s technical and ownership abilities.
 
-Experience working as both IC and manager with 100% remote teams.
+## DigitalOcean
+### Senior Software Engineer
+### Jun 2016 - Oct 2016
 
-Some of the response to our launch:
-https://twitter.com/jpwarren/status/849416521759772675
-https://twitter.com/petebocken/status/849372191401660416
-https://twitter.com/jpwarren/status/849401877317996551
-https://twitter.com/JuanDMeGon/status/849336436339945472
-https://twitter.com/petermeech/status/849545659413868545
-https://twitter.com/t3hcr/status/849619327720534018
-https://twitter.com/jeromeknoot/status/849962468780724224 See less
+As a dedicated and performance-driven senior software engineer, I created information systems by studying operations, and designing and installing software solutions, and facilitating needs of software team. Moreover, I led team of 10 developers entrusted with building new and sustaining existing websites.
 
-Senior Software Engineer II
-Jet.com
-Oct 2014 - Jan 2016
+Key Accomplishments:
 
+* Developed public Monitoring and Alerting product (Go, EmberJS, Docker) and maintained efficiency throughout lifecycle.
+* Processed 140K messages per minute by building system to scale development horizontally indefinitely.
 
-I am a full stack senior engineer with F# on the backend and AngularJS on the front end. All of the below is running on Windows Azure using a microservices architecture with some other cool technologies thrown in like Elasticsearch, etc. Each team was responsible for a good portion of their own devops work too so I setup and ran servers for all of these things as well as coded them. I don't just write software, I create complete working systems from the network through the database all the way to the code on the backend and front end  -Designed and implemented backend for Jet Insider marketing gamification. The winner got 100,000 options in the company. - Built out our entire SQL Server story for all developers at Jet.com - Built out our authentication and authorization story for all developers at Jet.com - Designed, built and maintained entire customer service/CRM software backend - Designed and implemented several important features on our Order Processing engine including the entire customer facing email messaging/communication around order events  Then I transitioned into Data Science where I: - Created an analytics system for bot detection  Culturally I created and run many internal organizations. Jet's official continuing education program, The official workout group (both are featured on all recruiting materials as benefits of the job).  As a side project, I implemented a complete version of reddit/stackoverflow for internal idea sharing as well as voting on proposals, etc in a secure way.  Yes, all in my first year.  PS. I also wrote a line for this: https://www.youtube.com/watch?v=TlrSKnMrI10
+## Jet.com
+### Senior Software Engineer II
+### Oct 2014 - Jan 2016
 
-https://techcrunch.com/2015/09/11/a-month-after-launch-discount-shopping-site-jet-com-becomes-4-marketplace/
-https://www.engadget.com/2015/08/20/jet-dot-com/
-https://www.youtube.com/watch?v=TlrSKnMrI10
+My job entailed performing coding, debugging, testing, and troubleshooting throughout application development process. Moreover, I directed effective teams and developed complex and highly technical systems proficiently.
 
-Senior Software Engineer
-Liquidnet
-Jun 2009-Oct 2014
+Key Accomplishments:
 
-Built and maintained Real-time risk analysis/monitoring system which was nominated for a Financial Services Innovation Award in 2010  Drove two technical migrations from C/C++ front ends to C# WPF front ends and more recently from C/C++ backends to web applications
+* Created complete SQL Server story for all jet.com developers, including creation, migration, backup, etc., and developed authentication and authorization story for all jet.com developers.
+* Designed and maintained customer service CRM software backend leveraging knowledge from engineering degree.
+* Devised and implemented key components of Order Processing engine, including entire customer-facing email messaging/communication around order events.
+* Initiated backend for Jet Insider marketing game, resulting in 100K company options offer for winner.
+* Developed analytics system for bot detection and built out entire geo-redundant system of machines on Azure for all projects.
 
-Software Development Engineer
-Microsoft
-Jan 2007 - Mar 2009
+## Liquidnet
+### Senior Software Engineer
+### Jun 2009-Oct 2014
 
+As a technically sound professional with an engineering degree and well-established knowledge of softwares, I proficiently managed software development life cycle tasks. My responsibilities entailed evaluating and debugging codes and building tools and applications through clean, efficient codes.
 
-I've worked on two teams. VB IDE where I worked on Visual Studio 2010. I removed the need for _ as a continuation character from VB10. Also project codename "Oslo" where I was a performance developer responsible for designing, developing and maintaining the performance collection infrastructure as well as automated performance tests.
+Key Accomplishments:
 
+* Received nomination for Financial Services Innovation Award in 2010 by designing and maintaining real-time risk analysis/monitoring system.
+* Spearheaded two technical migrations from C/C++ front ends to C# WPF front ends and, more recently, from C/C++ backends to web applications. 
 
-Software Engineer
-Philips
-Jun 1999 - Mar 2001
+## Microsoft
+### Software Development Engineer
+### Jan 2007 - Mar 2009
 
-• Designed, Built, and maintained the international corporate intranet which aided in communication for both engineering and our national sales organizations in nine countries including Spain, France, the Netherlands, and China. • Made weekly presentations to senior level executives. Learned about improved business processes such as Kaizan and Gemba. Effectively communicated technical concepts to nontechnical people. • Utilized Software Engineering practices to bring modularity and portability to new applications and existing code through 3-Tier architecture and object oriented programming. • Developed Lotus Notes applications to automate business processes.
+Visual Studio, Oslo 
 
+## Software Engineer
+### Philips
+### Jun 1999 - Mar 2001
 
+# Education
 
-Education
+## Syracuse University
+### BE, Computer Engineering
 
-Syracuse University
-BE, Computer Engineering
+IEEE Award Best Design Jr. Design Competition 2006
 
-IEEE Award Best Design Jr. Design Competition 2006 IEEE Award Most Innovative Project 2007 
+IEEE Award Most Innovative Project 2007 
 
